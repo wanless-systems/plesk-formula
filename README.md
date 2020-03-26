@@ -9,7 +9,7 @@ Install and configure [Plesk](https://www.plesk.com)
     * Agree with license
     * Activate mod_security with `tortix` rule set
     * Specify default crontab shell
-    * Set Russian locale as default
+    * Set English locale as default
     * Disable domain registration and certificate purchasing promos
     * Set recommended SSL ciphers and protocols
     * Create default admin's subscription using hostname

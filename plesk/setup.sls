@@ -10,7 +10,7 @@ setup_plesk:
     - name: |
         PSA_PASSWORD={{ pass }} /usr/sbin/plesk bin init_conf --init -shared_ips add:{{ ip }} -license_agreed true -admin_info_not_required true -send_announce false -send_tech_announce false -hostname {{ fqdn }} -passwd "" -company plesk.com -name Administrator -email {{ email }}
         /usr/sbin/plesk bin server_pref -u -waf-rule-engine on -waf-rule-set tortix -keep-local-backup false -crontab-secure-shell /bin/bash
-        /usr/sbin/plesk bin locales --set-default ru-RU
+        /usr/sbin/plesk bin locales --set-default en-US
         /usr/sbin/plesk bin panel_gui -p -domain_registration false
         /usr/sbin/plesk bin panel_gui -p -cert_purchasing false
         /usr/sbin/plesk sbin pci_compliance_resolver --enable
