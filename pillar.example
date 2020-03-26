@@ -11,6 +11,9 @@ plesk:
       - plesk-panel
       - recidive
       - ssh
+
+# component options can be found in: https://confluence.wanless.systems/x/3YQzB
+
   components:
     - panel               # The Plesk control panel
     - fail2ban            # Fail2Ban
