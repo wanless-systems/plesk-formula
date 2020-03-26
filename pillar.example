@@ -12,19 +12,25 @@ plesk:
       - recidive
       - ssh
   components:
-    - panel
-    - fail2ban
-    - selinux
-    - l10n
-    - pmm
-    - mysqlgroup
-    - roundcube
-    - postfix
-    - dovecot
-    - awstats
-    - mod_fcgid
-    - webservers
-    - php5.6
-    - phpgroup
-    - nginx
-    - heavy-metal-skin
+    - panel               # The Plesk control panel
+    - fail2ban            # Fail2Ban
+    - selinux             # Plesk SELinux policy
+    - pmm                 # Plesk Migration tool
+    - mysqlgroup          # MariaDB Server
+    - roundcube           # Roundcube Webmail Client
+    - horde               # Horde Webmail Client
+    - postfix             # Postfix SMTP Server
+    - dovecot             # Dovecot IMAP/POP3
+    - awstats             # AWStats
+    - mod_fcgid           # High perf alternative to mod_cgi
+    - webservers          # Apache Webserver
+    - php7.4              # php7.4 (Plesk Build)
+    - php7.3              # php7.3 (Plesk build)
+    - phpgroup            # Operating Vendor PHP release
+    - nginx               # Nginx Webserver
+    - heavy-metal-skin    # Skins & Colour
+    - git                 # Git
+    - spamassassin        # spamassassin
+    - wp-toolkit          # Wordpress Toolkit
+    - letsencrypt         # LetsEncrypt
+    - sslit               # interface to secure sites with SSL/TLS certs

@@ -7,8 +7,14 @@
 {% set git_extension_url = 'https://ext.plesk.com/packages/ad09122e-0f57-49ba-b06c-847b735158af-git/download?1.1.3-245' %}
 {% set sftpbackup_extension_url = 'https://ext.plesk.com/packages/50e0dbd3-0fa3-45e8-ac4c-9333ade4de96-sftp-backup/download?1.1.0-14' %}
 {% set wptoolkit_extension_url = 'https://ext.plesk.com/packages/e191cb00-41b4-4ca9-a1d4-9cae619e2546-wp-toolkit/download?4.5.1-2962' %}
+{% set extension_url = 'https://ext.plesk.com/packages/f6847e61-33a7-4104-8dc9-d26a0183a8dd-letsencrypt/download' %}
 
 # Installation of plesk modules from https://www.plesk.com/extensions
+
+install_letsencrypt_plesk:
+  cmd.run:
+    - name: /usr/sbin/plesk bin extension --install-url {{ extension_url }}
+    - unless: /usr/sbin/plesk bin extension --list | grep -q letsencrypt
 
 install_google-drive-backup_plesk:
   cmd.run:
