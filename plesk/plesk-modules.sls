@@ -15,7 +15,7 @@
 install_letsencrypt_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --install-url {{ letsencrypt_extension_url }}
-    - unless: /usr/sbin/plesk bin extension --list | grep -q letsencrypt
+    - unless: /usr/sbin/plesk bin extension --list | grep letsencrypt
 
 install_slack_plesk:
   cmd.run:
