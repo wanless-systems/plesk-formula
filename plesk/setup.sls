@@ -28,3 +28,9 @@ fail2ban_plesk:
         /usr/sbin/plesk bin ip_ban --enable-jails "{{ jails | join (';') }}"
         /usr/sbin/plesk bin ip_ban --add-trusted "{{ ip }};{{ white_ips | join (';') }}"
     - onlyif: /usr/sbin/plesk bin ip_ban -i | grep inactive -q
+
+remove_components:
+  cmd.run:
+    - name: |
+        plesk installer --remove-component=advisor
+        plesk installer --remove-component=social-login
