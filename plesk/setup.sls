@@ -32,5 +32,11 @@ fail2ban_plesk:
 remove_components:
   cmd.run:
     - name: |
-        plesk installer --remove-component=advisor
-        plesk installer --remove-component=social-login
+        /usr/sbin/plesk installer --remove-component=advisor
+        /usr/sbin/plesk installer --remove-component=social-login
+
+disable_plesk_autoupdates:
+  cmd.run:
+    - name: |
+        /usr/sbin/plesk bin server_pref -u -autoupdates false
+        /usr/sbin/plesk bin server_pref -u -autoupdates-third-party false
