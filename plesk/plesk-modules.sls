@@ -10,6 +10,7 @@
 {% set git_extension_url = 'https://ext.plesk.com/packages/ad09122e-0f57-49ba-b06c-847b735158af-git/download' %}
 {% set sftpbackup_extension_url = 'https://ext.plesk.com/packages/50e0dbd3-0fa3-45e8-ac4c-9333ade4de96-sftp-backup/download' %}
 {% set wptoolkit_extension_url = 'https://ext.plesk.com/packages/e191cb00-41b4-4ca9-a1d4-9cae619e2546-wp-toolkit/download' %}
+{% set seotoolkit_url = 'https://ext.plesk.com/packages/2ae9cd0b-bc5c-4464-a12d-bd882c651392-xovi/download' %}
 
 # Installation of plesk modules from https://www.plesk.com/extensions
 
@@ -62,3 +63,8 @@ install_wp-toolkit_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --install-url {{ wptoolkit_extension_url }}
     - unless: /usr/sbin/plesk bin extension --list | grep wp-toolkit
+
+install_seotoolkit_plesk:
+  cmd.run:
+    - name: /usr/sbin/plesk bin extension --install-url {{ seotoolkit_extension_url }}
+    - unless: /usr/sbin/plesk bin extension --list | grep xovi
