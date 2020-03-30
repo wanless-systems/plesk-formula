@@ -12,6 +12,7 @@
 {% set wptoolkit_extension_url = 'https://ext.plesk.com/packages/e191cb00-41b4-4ca9-a1d4-9cae619e2546-wp-toolkit/download' %}
 {% set seotoolkit_url = 'https://ext.plesk.com/packages/2ae9cd0b-bc5c-4464-a12d-bd882c651392-xovi/download' %}
 {% set grafana_url = 'https://ext.plesk.com/packages/51669acf-f849-44fe-839f-3a099afd86e6-grafana/download' %}
+{% set advancedmonitoring_url = 'https://ext.plesk.com/packages/21ee121b-7b27-4f9d-834a-64d9d02a1ff2-monitoring/download' %}
 
 
 # Installation of plesk modules from https://www.plesk.com/extensions
@@ -74,4 +75,9 @@ install_seotoolkit_plesk:
 install_grafana_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --install-url {{ grafana_extension_url }}
-    - unless: /usr/sbin/plesk bin extension --list | grep grafana    
+    - unless: /usr/sbin/plesk bin extension --list | grep grafana
+
+install_advanced-monitoring_plesk:
+  cmd.run:
+    - name: /usr/sbin/plesk bin extension --install-url {{ advancedmonitoring_extension_url }}
+    - unless: /usr/sbin/plesk bin extension --list | grep monitoring
