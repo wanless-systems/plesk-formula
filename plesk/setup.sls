@@ -39,7 +39,4 @@ disable_plesk_autoupdates:
   cmd.run:
     - name: |
         /usr/sbin/plesk bin server_pref -u -autoupdates false
-        /usr/sbin/plesk bin server_pref -u -autoupdates-third-party false
-
-# Custom logo and branding of Plesk
-custom_logo: wanless        
+        /usr/sbin/plesk bin server_pref -u -autoupdates-third-party false      
