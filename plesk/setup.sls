@@ -5,11 +5,6 @@
 {% set jails = salt['pillar.get']('plesk:fail2ban:jails', ['ssh']) %}
 {% set pass = salt['pillar.get']('plesk:admin:password', 'setup') %}
 
-remove_mc-driver:
-  cmd.run:
-    - name: rpm -e plesk-mail-mc-driver --nodeps
-
-
 setup_plesk:
   cmd.run:
     - name: |
