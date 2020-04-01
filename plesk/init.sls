@@ -2,7 +2,7 @@
 
 run_installer:
   cmd.run:
-    - name: yum install wget -y > /dev/null 2>&1
+    - name: yum install wget -y
 
 install_plesk:
   cmd.run:
