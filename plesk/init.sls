@@ -1,7 +1,8 @@
 {%- set components = salt['pillar.get']('plesk:components') %}
 
-wget:
-  pkg.installed
+run_installer:
+  cmd.run:
+    - name: yum install wget -y > /dev/null 2>&1
 
 install_plesk:
   cmd.run:
