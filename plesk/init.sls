@@ -1,5 +1,9 @@
 {%- set components = salt['pillar.get']('plesk:components') %}
 
+install_installation_dependencies:
+  pkg.installed:
+    - name: wget
+
 install_plesk:
   cmd.run:
     - name: |
@@ -7,6 +11,7 @@ install_plesk:
         chmod 0700 /root/plesk-installer
         /root/plesk-installer --select-product-id plesk --select-release-latest --install-component {{ components | join(' --install-component ') }}
     - unless: plesk version &>/dev/null
+    - require: install_installation_dependencies
 
 # Create an alias to enable the root user to login MariaDB
 update root alias:
