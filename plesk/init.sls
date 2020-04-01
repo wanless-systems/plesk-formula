@@ -5,7 +5,7 @@ install_plesk:
     - name: |
         /usr/bin/wget autoinstall.plesk.com/plesk-installer -O /root/plesk-installer
         chmod 0700 /root/plesk-installer
-        /root/plesk-installer install plesk --preset Recommended --with {{ components | join(' --with ') }}
+        /root/plesk-installer install plesk --preset Recommended --with { components | join(' --with ') }
     - unless: plesk version &>/dev/null
 
 # Create an alias to enable the root user to login MariaDB
