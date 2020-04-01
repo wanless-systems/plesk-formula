@@ -1,5 +1,8 @@
 {%- set components = salt['pillar.get']('plesk:components') %}
 
+wget:
+  pkg.installed
+
 install_plesk:
   cmd.run:
     - name: |
