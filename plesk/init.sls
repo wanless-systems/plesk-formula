@@ -9,7 +9,8 @@ install_plesk:
     - name: |
         /usr/bin/wget autoinstall.plesk.com/plesk-installer -O /root/plesk-installer
         chmod 0700 /root/plesk-installer
-        /root/plesk-installer install plesk --preset Recommended --with {{ components | join(' --install-component ') }}
+        /root/plesk-installer --select-product-id plesk --select-release-latest --install-component {{ components | join(' --install-component ') }}
+    - unless: plesk version &>/dev/null
     - require:
       - pkg: install_installation_dependencies
 
