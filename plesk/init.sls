@@ -9,11 +9,10 @@ install_plesk:
     - name: |
         /usr/bin/wget autoinstall.plesk.com/plesk-installer -O /root/plesk-installer
         chmod 0700 /root/plesk-installer
-        /root/plesk-installer --select-product-id plesk --select-release-latest --install-component {{ components | join(' --install-component ') }}
-    - unless: plesk version &>/dev/null
+        /root/plesk-installer --select-product-id plesk --select-release-latest 
     - require:
       - pkg: install_installation_dependencies
-      
+
 # Create an alias to enable the root user to login MariaDB
 update root alias:
   file.append:
