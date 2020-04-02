@@ -3,7 +3,6 @@
 install_installation_dependencies:
   pkg.installed:
     - name: wget
-    - name: psa-mail-driver-common
 
 install_plesk:
   cmd.run:
