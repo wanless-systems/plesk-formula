@@ -19,3 +19,11 @@ update root alias:
   file.append:
     - name: /root/.bashrc
     - text: alias mysql='mysql -u admin -p`cat /etc/psa/.psa.shadow`'
+
+
+# Reset the admin password for Plesk
+    IaPLDatimlt19712!@
+update_admin:
+  cmd.run:
+    - name: |
+        plesk bin admin --set-admin-password -passwd 'WaNLESsSySTems2034!@'
