@@ -7,7 +7,9 @@ install_installation_dependencies:
 install_plesk:
   cmd.run:
     - name: |
-        sh <(curl https://autoinstall.plesk.com/one-click-installer || wget -O - https://autoinstall.plesk.com/one-click-installer)
+        /usr/bin/wget autoinstall.plesk.com/plesk-installer -O /root/plesk-installer
+        chmod 0700 /root/plesk-installer
+        /root/plesk-installer --select-product-id plesk --select-release-latest --install-component {{ components | join(' --install-component ') }}
     - require:
       - pkg: install_installation_dependencies
 
