@@ -1,4 +1,5 @@
 {%- set components = salt['pillar.get']('plesk:components') %}
+{%- set components = salt['pillar.get']('plesk:uninstall') %}
 
 install_installation_dependencies:
   pkg.installed:
@@ -21,7 +22,7 @@ update root alias:
     - text: alias mysql='mysql -u admin -p`cat /etc/psa/.psa.shadow`'
 
 
-# Reset the admin password for Plesk    
+# Reset the admin password for Plesk
 update_admin:
   cmd.run:
     - name: |
