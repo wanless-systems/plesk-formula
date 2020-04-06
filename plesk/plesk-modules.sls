@@ -87,10 +87,10 @@ install_advanced-monitoring_plesk:
 remove_social-login_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --uninstall-url {{ social_login_url }}
-    - unless: /usr/sbin/plesk bin extension --list | grep social-login
+#    - unless: /usr/sbin/plesk bin extension --list | grep social-login
 
 remove_advisor_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --uninstall-url {{ advisor_url }}
-    - unless: /usr/sbin/plesk bin extension --list | grep advisor
+#    - unless: /usr/sbin/plesk bin extension --list | grep advisor
       -advisor
