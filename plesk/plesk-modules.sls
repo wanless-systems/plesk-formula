@@ -93,4 +93,3 @@ remove_advisor_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --uninstall-url {{ advisor_url }}
 #    - unless: /usr/sbin/plesk bin extension --list | grep advisor
-      -advisor
