@@ -12,7 +12,8 @@
 {% set seotoolkit_url = ${plesk_ext}/2ae9cd0b-bc5c-4464-a12d-bd882c651392-xovi/download %}
 {% set grafana_url = ${plesk_ext}/51669acf-f849-44fe-839f-3a099afd86e6-grafana/download %}
 {% set advancedmonitoring_url = ${plesk_ext}/21ee121b-7b27-4f9d-834a-64d9d02a1ff2-monitoring/download %}
-
+{% set social_login_url = ${plesk_ext}/1317d6b8-02d2-4ae6-ba21-1b13eb6dd609-social-login/download %}
+{% set advisor_url = ${plesk_ext}/bbf16bc7-094e-4cb3-8b9c-32066fc66561-advisor/download %}
 
 # Installation of plesk modules from https://www.plesk.com/extensions
 
@@ -41,7 +42,7 @@ install_image-preview_plesk:
     - name: /usr/sbin/plesk bin extension --install-url {{ image_extension_url }}
     - unless: /usr/sbin/plesk bin extension --list | grep image-preview
 
-install_help-center_plesk:There's one thing to bear in mind, and that's dependencies. Salt attempts to do things as efficiently as possible, so it doesn't do things synchronously according to the order in which states appear in the state files. Instead, it works by dependency checking, and then running whatever it can, when it can. So you need to get dependencies right. The wget command is used by the install_plesk state. We need to do another state that installs wget, and then make the install_plesk state depend on it, to make sure the wget package is installed before we attempt to use it. (edited)
+install_help-center_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --install-url {{ help_extension_url }}
     - unless: /usr/sbin/plesk bin extension --list | grep help-center
@@ -68,15 +69,28 @@ install_wp-toolkit_plesk:
 
 install_seotoolkit_plesk:
   cmd.run:
-    - name: /usr/sbin/plesk bin extension --install-url {{ seotoolkit_extension_url }}
+    - name: /usr/sbin/plesk bin extension --install-url {{ seotoolkit_url }}
     - unless: /usr/sbin/plesk bin extension --list | grep xovi
 
 install_grafana_plesk:
   cmd.run:
-    - name: /usr/sbin/plesk bin extension --install-url {{ grafana_extension_url }}
+    - name: /usr/sbin/plesk bin extension --install-url {{ grafana_url }}
     - unless: /usr/sbin/plesk bin extension --list | grep grafana
 
 install_advanced-monitoring_plesk:
   cmd.run:
-    - name: /usr/sbin/plesk bin extension --install-url {{ advancedmonitoring_extension_url }}
+    - name: /usr/sbin/plesk bin extension --install-url {{ advancedmonitoring_url }}
     - unless: /usr/sbin/plesk bin extension --list | grep monitoring
+
+# components we do not want Plesk to install
+
+remove_social-login_plesk:
+  cmd.run:
+    - name: /usr/sbin/plesk bin extension --uninstall-url {{ social_login_url }}
+    - unless: /usr/sbin/plesk bin extension --list | grep social-login
+
+remove_advisor_plesk:
+  cmd.run:
+    - name: /usr/sbin/plesk bin extension --uninstall-url {{ advisor_url }}
+    - unless: /usr/sbin/plesk bin extension --list | grep advisor
+      -advisor
