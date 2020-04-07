@@ -12,8 +12,6 @@
 {% set seotoolkit_url = ${plesk_ext}/2ae9cd0b-bc5c-4464-a12d-bd882c651392-xovi/download %}
 {% set grafana_url = ${plesk_ext}/51669acf-f849-44fe-839f-3a099afd86e6-grafana/download %}
 {% set advancedmonitoring_url = ${plesk_ext}/21ee121b-7b27-4f9d-834a-64d9d02a1ff2-monitoring/download %}
-{% set social_login_url = ${plesk_ext}/1317d6b8-02d2-4ae6-ba21-1b13eb6dd609-social-login/download %}
-{% set advisor_url = ${plesk_ext}/bbf16bc7-094e-4cb3-8b9c-32066fc66561-advisor/download %}
 
 # Installation of plesk modules from https://www.plesk.com/extensions
 
@@ -81,15 +79,3 @@ install_advanced-monitoring_plesk:
   cmd.run:
     - name: /usr/sbin/plesk bin extension --install-url {{ advancedmonitoring_url }}
     - unless: /usr/sbin/plesk bin extension --list | grep monitoring
-
-# components we do not want Plesk to install
-
-remove_social-login_plesk:
-  cmd.run:
-    - name: /usr/sbin/plesk bin extension --uninstall-url {{ social_login_url }}
-#    - unless: /usr/sbin/plesk bin extension --list | grep social-login
-
-remove_advisor_plesk:
-  cmd.run:
-    - name: /usr/sbin/plesk bin extension --uninstall-url {{ advisor_url }}
-#    - unless: /usr/sbin/plesk bin extension --list | grep advisor
