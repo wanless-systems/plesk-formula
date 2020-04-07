@@ -1,5 +1,5 @@
 {%- set components = salt['pillar.get']('plesk:components') %}
-{%- set components = salt['pillar.get']('plesk:uninstall') %}
+{%- set uninstall = salt['pillar.get']('plesk:uninstall') %}
 
 install_installation_dependencies:
   pkg.installed:
